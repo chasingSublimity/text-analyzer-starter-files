@@ -39,10 +39,12 @@ $(document).ready(function() {
 // Get Input, remove punctuation and return string as array of lower case letters
 	$('form').submit(function(event) {
 		event.preventDefault();
-		var words = $('#user-text').val().toLowerCase().split(' ');
+		var words = $('#user-text').val().toLowerCase().split(/[ ,!."';+:-]/).filter(function(el) {return el.length != 0});
 		var characters = $('#user-text').val().toLowerCase().split('').filter(function(el) {return el.length != 0});
 		var sentences = $('#user-text').val().toLowerCase().split('.').filter(function(el) {return el.length != 0});
 		console.log(words);
+		console.log(characters);
+		console.log(sentences);
 
 // Analytic functions
 		computeWordCount(words);
